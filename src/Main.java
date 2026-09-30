@@ -8,7 +8,8 @@ public class Main {
         //exercice2();
         //exercice3();
         //exercice4();
-        exercice5();
+        //exercice5();
+        //exercice6();
     }
 
     public static void exercice1() {
@@ -138,16 +139,22 @@ public class Main {
 
     ECRIRE("Surface nette", surfaceNette)
 
+    nombrePots <- surfaceNette/10
+    ECRIRE("Nombre de pots :", nombrePots)
 
+    prixTotal <- nombrePots*29.90
+    ECRIRE("Prix total :", prixTotal)
+
+    FIN
      */
     public static void exercice5() {
         int longueur;
         int largeur;
         double hauteur;
 
-        int surfaceNette;
+        double surfaceNette;
         int perimetre;
-        int nombrePots;
+        double nombrePots;
         double prixTotal;
 
         Scanner scanner = new Scanner(System.in);
@@ -165,7 +172,56 @@ public class Main {
 
         perimetre = (longueur+largeur)*2;
         surfaceNette = (int) ((perimetre*hauteur)*0.8);
-        System.out.println("Surface nette : "+surfaceNette);
+        System.out.println("Surface nette : "+Math.round(surfaceNette));
 
+        nombrePots = Math.ceil(surfaceNette/10);
+        System.out.println("Nombre de pots : "+Math.round(nombrePots));
+
+        prixTotal = nombrePots*29.90;
+        System.out.println("Prix total : "+Math.nextUp(prixTotal));
+
+        // Réponse question: en Java & JavaScript (car les fonctions sont les mêmes mathématiquement) Math.round() n'est pas la bonne fonction car elle arrondi à l'entier le plus proche, tandis que Math.ceil() arrondis au nombre supérieur.
+    }
+
+    /*
+    ALGORITHME Convertisseur de temps
+
+    DEBUT
+    VARIABLE nombre_secondes : ENTIER
+
+    VARIABLE heures : ENTIER
+    VARIABLE minutes : ENTIER
+    VARIABLE secondes : ENTIER
+    VARIABLE reste : ENTIER
+
+    ECRIRE("Nombre de secondes ?")
+    LIRE(nombre_secondes)
+
+    heures <- nombre_seconds / 3600
+    reste <- nombre_secondes % 3600
+    minutes <- reste / 60
+    secondes <- reste % 60
+
+    ECRIRE(heures,"h",minutes,"m",secondes,"s"
+     */
+    public static void exercice6() {
+        int nombre_secondes;
+
+        int heures;
+        int minutes;
+        int secondes;
+        int reste;
+
+        System.out.println("Nombre de secondes ?\n");
+        Scanner scanner = new Scanner(System.in);
+        nombre_secondes = scanner.nextInt();
+        scanner.close();
+
+        heures = nombre_secondes / 3600;
+        reste = nombre_secondes % 3600;
+        minutes = reste / 60;
+        secondes = reste % 60;
+
+        System.out.println(heures+"h "+minutes+"m "+secondes+"s");
     }
 }
