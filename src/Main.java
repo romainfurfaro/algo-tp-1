@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -10,6 +12,9 @@ public class Main {
         //exercice4();
         //exercice5();
         //exercice6();
+        //tp2_exercice1();
+        //tp2_exercice2();
+        tp2_exercice3();
     }
 
     public static void exercice1() {
@@ -223,5 +228,97 @@ public class Main {
         secondes = reste % 60;
 
         System.out.println(heures+"h "+minutes+"m "+secondes+"s");
+    }
+
+    /**
+     * TP 2 - Conditions et boucles
+     */
+    public static void tp2_exercice1() {
+        int nombre1;
+        int nombre2;
+        char operateur;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nombre 1 ?\n");
+        nombre1 = scanner.nextInt();
+
+        System.out.print("Opérateur ? (+ - * /)\n");
+        operateur = scanner.next().charAt(0);
+
+        System.out.print("Nombre 2 ?\n");
+        nombre2 = scanner.nextInt();
+
+        switch(operateur) {
+            case '+':
+                System.out.print(nombre1+nombre2);
+                break;
+            case '-':
+                System.out.print(nombre1-nombre2);
+                break;
+            case '*':
+                System.out.print(nombre1*nombre2);
+                break;
+            case '/':
+                if (nombre1 == 0 || nombre2 == 0) {
+                    System.out.print("Erreur: Division par 0");
+                    break;
+                }
+                System.out.print(nombre1/nombre2);
+            default:
+                System.out.print("Erreur: opérateur inconnu");
+                break;
+        }
+    }
+
+    public static void  tp2_exercice2() {
+        int nombrePropose = 0;
+        Integer nombreAleatoireChoisi = new Random().ints(1, 100).iterator().next();
+        int essais = 0;
+
+        System.out.println("Essayez de deviner le nombre !");
+
+        do {
+            Scanner scanner = new Scanner(System.in);
+            nombrePropose = scanner.nextInt();
+            essais = essais + 1;
+            System.out.print("Essai "+essais+" : "+nombrePropose+ " -> ");
+            if (nombrePropose > nombreAleatoireChoisi) {
+                System.out.println("Plus petit !");
+            } else if (nombrePropose < nombreAleatoireChoisi) {
+                System.out.println("Plus grand !");
+            } else {
+                System.out.println("Bravo ! Trouvé en "+essais+" essais");
+            }
+        } while (nombreAleatoireChoisi != nombrePropose);
+
+        /*
+        Réponse questions:
+        - Sentinelle
+        - D'abord proposer 50, voir si c'est plus grand ou plus petit puis faire 15 en 15, puis 5 en 5 puis 2 en 2 ou 3 en 3 jusqu'à se rapprocher du nombre aléatoire
+        - 10
+         */
+    }
+
+    public static void tp2_exercice3() {
+        int nombre = 0;
+        System.out.println("Donnez un nombre");
+        Scanner scanner = new Scanner(System.in);
+        nombre = scanner.nextInt();
+
+        for (int i = 1; i <= nombre; i++) {
+
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.print("FizzBuzz");
+            } else if (i % 3 == 0) {
+                System.out.print("Fizz");
+            } else if (i % 5 == 0) {
+                System.out.print("Buzz");
+            } else {
+                System.out.print(Integer.toString(i));
+            }
+            System.out.print(",");
+        }
+
     }
 }
