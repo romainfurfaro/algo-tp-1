@@ -1,6 +1,8 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -14,7 +16,9 @@ public class Main {
         //exercice6();
         //tp2_exercice1();
         //tp2_exercice2();
-        tp2_exercice3();
+        //tp2_exercice3();
+        //tp2_exercice4();
+        tp2_exercice5();
     }
 
     public static void exercice1() {
@@ -302,23 +306,83 @@ public class Main {
 
     public static void tp2_exercice3() {
         int nombre = 0;
+        StringJoiner liste = new StringJoiner(",");
+
         System.out.println("Donnez un nombre");
         Scanner scanner = new Scanner(System.in);
         nombre = scanner.nextInt();
 
         for (int i = 1; i <= nombre; i++) {
+            String element = "";
+            if (i % 3 == 0) element += "Fizz";
+            if (i % 5 == 0) element += "Buzz";
+            if (i % 7 == 0) element += "Wazz";
 
-            if (i % 3 == 0 && i % 5 == 0) {
-                System.out.print("FizzBuzz");
-            } else if (i % 3 == 0) {
-                System.out.print("Fizz");
-            } else if (i % 5 == 0) {
-                System.out.print("Buzz");
-            } else {
-                System.out.print(Integer.toString(i));
-            }
-            System.out.print(",");
+            liste.add(element.isEmpty() ? String.valueOf(i) : element);
         }
+        System.out.println(liste.toString());
+    }
+
+    public static void tp2_exercice4() {
+        String mdp;
+
+        Boolean mdpValide = false;
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Longueur 8 mots minimum
+        System.out.println("Mot de passe ?");
+        mdp = scanner.nextLine();
+
+        System.out.print("Long ≥ 8");
+        Boolean longueur = mdp.length() > 8;
+        System.out.print(longueur ? " ✓" : " ✗");
+
+        System.out.println("");
+
+        // Au moins 1 majuscule
+        System.out.print("Majuscule");
+        Boolean majuscule = false;
+
+        for (int i = 0; i < mdp.length(); i++) {
+            char c = mdp.charAt(i);
+            majuscule = c >= 'A' && c <= 'Z' ? true : false;
+            if (majuscule) break;
+        }
+        System.out.println(majuscule ? " ✓" : " ✗");
+
+        // Au moins 1 minuscule
+        System.out.print("Minuscule");
+        Boolean minuscule = false;
+        for (int i = 0; i < mdp.length(); i++) {
+            char c = mdp.charAt(i);
+            minuscule = c >= 'a' && c <= 'z' ? true : false;
+            if (minuscule) break;
+        }
+        System.out.println(minuscule ? " ✓" : " ✗");
+
+        // Au moins un chiffre
+        System.out.print("Chiffre");
+        Boolean chiffre = false;
+        for (int i = 0; i < mdp.length(); i++) {
+            char c = mdp.charAt(i);
+            chiffre = c >= '0' && c <= '9' ? true : false;
+            if (chiffre) break;
+        }
+        System.out.println(chiffre ? " ✓" : " ✗");
+
+        mdpValide = longueur && majuscule && minuscule && chiffre;
+        System.out.println(String.format("Le mot de passe est %s", mdpValide ? "Valide" : "Invalide"));
+    }
+
+
+    /**
+     ALGORITHME Table de multiplication formtée
+     DEBUT
+     VARIABLE n_multiplication : ENTIER
+
+     */
+    public static void tp2_exercice5() {
 
     }
 }
