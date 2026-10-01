@@ -18,7 +18,7 @@ public class Main {
         //tp2_exercice2();
         //tp2_exercice3();
         //tp2_exercice4();
-        tp2_exercice5();
+        tp3_exercice1();
     }
 
     public static void exercice1() {
@@ -375,14 +375,7 @@ public class Main {
         System.out.println(String.format("Le mot de passe est %s", mdpValide ? "Valide" : "Invalide"));
     }
 
-
-    /**
-     ALGORITHME Table de multiplication formtée
-     DEBUT
-     VARIABLE n_multiplication : ENTIER
-
-     */
-    public static void tp2_exercice5() {
+    public static void tp3_exercice1() {
 
     }
 }
